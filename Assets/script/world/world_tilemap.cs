@@ -1,0 +1,40 @@
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.Tilemaps;
+
+public class bg_script : MonoBehaviour
+{
+  
+    public AutoTile tile;
+    public Tilemap tilemap;
+    public Grid grid;
+    void Start()
+    {
+        grid = new GameObject("Grid").AddComponent<Grid>();
+
+        tilemap = new GameObject("Background").AddComponent<Tilemap>();
+        tilemap.transform.SetParent(grid.transform);
+       
+
+        TilemapRenderer renderer = tilemap.AddComponent<TilemapRenderer>();
+
+
+        populate_grid_arena();
+
+
+    }
+    void populate_grid_arena()
+    {
+        Vector3Int WorldSize = new Vector3Int(150, 150, 0);
+
+        for (int x = -150; x < WorldSize.x; x++)
+        {
+            for (int y = -150; y < WorldSize.y; y++)
+            {
+                tilemap.SetTile(new Vector3Int(x, y, 0), tile);
+
+            }
+        }
+
+    }
+}
