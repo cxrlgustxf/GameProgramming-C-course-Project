@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class bg_script : MonoBehaviour
+public class TilemapBackground : MonoBehaviour
 {
   
     public AutoTile tile;
@@ -18,12 +18,13 @@ public class bg_script : MonoBehaviour
 
         TilemapRenderer renderer = tilemap.AddComponent<TilemapRenderer>();
 
+        grid.transform.localScale = new Vector3(0.2f, 0.2f, 1);
 
-        populate_grid_arena();
+        PopulateBackground();
 
 
     }
-    void populate_grid_arena()
+    void PopulateBackground()
     {
         Vector3Int WorldSize = new Vector3Int(150, 150, 0);
 
