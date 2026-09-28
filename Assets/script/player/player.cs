@@ -33,13 +33,13 @@ public class player : MonoBehaviour
 
     void MoveAndAnimate()
     {
-
+        Vector2 lastMovement;
 
         animations.SetAnimation(input.MovementInput.x, input.MovementInput.y);
 
         if (input.MovementInput != Vector2.zero)
         {
-            
+            lastMovement = input.MovementInput;
             rb.linearVelocity = movement.GetMovement(input.MovementInput, 10f);
         }
         else
