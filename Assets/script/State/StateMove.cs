@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class StateChase : IState
 {
-    
-    void EnterState(StateManager cxt)
-    {
-    
-    }
-    void ExitState(StateManager cxt) 
+
+    void EnterState(GameObject cxt)
     {
 
     }
-    void UpdateState(StateManager cxt) 
+    void ExitState(GameObject cxt) 
     {
-    
+        
+    }
+    void UpdateState(GameObject cxt) 
+    {
+        cxt.movement.
     }
 }

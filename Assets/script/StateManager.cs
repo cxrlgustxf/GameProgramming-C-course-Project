@@ -1,37 +1,25 @@
 using UnityEngine;
 
-public class StateManager : MonoBehaviour
+public class PlayerStateMachine : StateMachine
 {
 
-    public Movement movement;
-    public Rigidbody2D rb;
-    public Animations animations;
 
-    public Projectile projectile;
+    public IState _currentState;
+ 
 
-    IState _currentState;
-    void Awake()
+    public override void UpdateStateManager(IState _currentState)
     {
-        movement = new Movement();
-        rb = GetComponent<Rigidbody2D>();
-        animations = GetComponent<Animations>();
-
+        throw new System.NotImplementedException();
     }
 
-
-    void Update()
+    public override void ChangeState(IState newState)
     {
-        _currentState.UpdateState(this);
+        throw new System.NotImplementedException();
     }
 
-
-    void ChangeState(IState newState)
+    public override void FetchContext(Player player)
     {
-        _currentState.ExitState(this);
 
-        _currentState = newState;
-
-        _currentState.EnterState(this);
-
+        throw new System.NotImplementedException();
     }
 }
