@@ -7,8 +7,6 @@ public class Enemy : MonoBehaviour
     public Movement movement;
     public StateManager stateManager;
 
-    
-
     public 
     void Awake()
     {
@@ -20,8 +18,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        stateManager.FetchContext(this);
-        stateManager.UpdateStateManager();
+        
     }
 
 

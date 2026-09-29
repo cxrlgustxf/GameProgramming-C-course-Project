@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 918041036}
   - component: {fileID: 918041037}
   - component: {fileID: 918041035}
-  - component: {fileID: 918041038}
   m_Layer: 0
   m_Name: GameWorld
   m_TagString: Untagged
@@ -181,19 +180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WorldManager
   playerPrefab: {fileID: 7064562798220495080, guid: 8144cdd7158b2054091f5a6ced417315, type: 3}
---- !u!114 &918041038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 918041034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a0bbc569ec867d4fb2201e437513b22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StateManager
-  currCxt: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

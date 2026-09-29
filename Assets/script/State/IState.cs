@@ -3,11 +3,11 @@ using UnityEngine;
 public interface IState
 {
     
-    void EnterState(GameObject cxt) { }
+    void EnterState(StateManager cxt) { }
 
-    void ExitState(GameObject cxt) { }
+    void ExitState(StateManager cxt) { }
 
-    void UpdateState(GameObject cxt) { }
+    void UpdateState(StateManager cxt) { }
 
 
 

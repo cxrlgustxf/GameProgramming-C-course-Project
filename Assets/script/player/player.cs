@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class player : MonoBehaviour
 {
 
 
@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     public Rigidbody2D rb;
 
-    public PlayerStateMachine stateManager;
+
 
     void Awake()
     {
@@ -26,8 +26,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        stateManager.FetchContext(this.gameObject);
-        stateManager.UpdateStateManager();
+
+        MoveAndAnimate();
+
     }
 
     void MoveAndAnimate()
@@ -45,8 +46,5 @@ public class Player : MonoBehaviour
         {
             rb.linearVelocity = Vector2.zero;
         }
-
-      
     }
-
 }
