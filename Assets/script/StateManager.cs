@@ -7,8 +7,6 @@ public class StateManager : MonoBehaviour
     public Rigidbody2D rb;
     public Animations animations;
 
-    public Projectile projectile;
-
     IState _currentState;
     void Awake()
     {

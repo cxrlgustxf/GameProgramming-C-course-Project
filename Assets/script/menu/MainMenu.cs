@@ -3,14 +3,25 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
 
-    public void StartGame()
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void StartGame()
     {
         SceneManager.LoadScene(1);
         Time.timeScale = 1.0f;
     }
 
-    public void QuitGame()
+    void QuitGame()
     {
         Application.Quit();
     }
