@@ -180,7 +180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WorldManager
   playerPrefab: {fileID: 7064562798220495080, guid: 8144cdd7158b2054091f5a6ced417315, type: 3}
-  playerInstance: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
