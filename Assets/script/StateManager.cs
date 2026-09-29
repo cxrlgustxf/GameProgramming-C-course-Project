@@ -7,6 +7,11 @@ public class StateManager : MonoBehaviour
     public Rigidbody2D rb;
     public Animations animations;
 
+<<<<<<< HEAD
+=======
+    public Projectile projectile;
+
+>>>>>>> parent of dd69405 (StateMachine abstract class implemented)
     IState _currentState;
     void Awake()
     {
