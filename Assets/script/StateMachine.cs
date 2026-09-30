@@ -3,29 +3,28 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
 
-    public Animations animations;
-    public InputManager input;
+
 
     public Movement movement;
     public Enemy enemy;
-    public Rigidbody2D rb;
+    public Player player;
+
     IState _currentState;
 
-    StateChase stateChase;
+    StateMove stateChase;
 
     void Awake()
     {
         
-        animations = GetComponent<Animations>();
-        input = GetComponent<InputManager>();
-        rb = GetComponent<Rigidbody2D>();
-        enemy = GetComponent<Enemy>();
 
-        stateChase = new StateChase();
+        enemy = GetComponent<Enemy>();
+        player = GetComponent<Player>();
+
+        stateChase = new StateMove();
 
 
         movement = new Movement();
-        if (input != null)
+        if (player != null)
         {
             _currentState = stateChase;
         }

@@ -19,8 +19,9 @@ public class Enemy: MonoBehaviour
     public float AttackRange;
     public float AttackDamage;
 
-    public Vector2 Target;
+    public Vector2 MoveTarget;
 
+    public Vector2 ShootTarget;
 
 
 
