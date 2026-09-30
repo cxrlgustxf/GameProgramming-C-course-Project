@@ -24,7 +24,7 @@ public class Enemy: MonoBehaviour
     public Vector2 ShootTarget;
 
 
-
+    public CircleCollider2D PlayerScan;
 
 
 
@@ -32,6 +32,8 @@ public class Enemy: MonoBehaviour
     
     void Awake()
     {
+
+        PlayerScan = GetComponent<CircleCollider2D>();
         Health = _object.Health;
         Speed = _object.Speed;
         Scale = _object.Scale;
@@ -44,4 +46,12 @@ public class Enemy: MonoBehaviour
 
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<Player>(out Player player))
+        {
+
+        }
+    }
 }
