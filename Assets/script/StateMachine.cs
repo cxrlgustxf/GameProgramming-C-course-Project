@@ -1,14 +1,13 @@
 using UnityEngine;
 
-public class StateManager : MonoBehaviour
+public class StateMachine : MonoBehaviour
 {
 
     public Animations animations;
     public InputManager input;
 
     public Movement movement;
-
-    public Vector2 Target;
+    public Enemy enemy;
     public Rigidbody2D rb;
     IState _currentState;
 
@@ -20,13 +19,17 @@ public class StateManager : MonoBehaviour
         animations = GetComponent<Animations>();
         input = GetComponent<InputManager>();
         rb = GetComponent<Rigidbody2D>();
-
+        enemy = GetComponent<Enemy>();
 
         stateChase = new StateChase();
 
 
         movement = new Movement();
-        _currentState = stateChase;
+        if (input != null)
+        {
+            _currentState = stateChase;
+        }
+        
 
     }
 
@@ -38,7 +41,7 @@ public class StateManager : MonoBehaviour
     }
 
 
-    void ChangeState(IState newState)
+    public void ChangeState(IState newState)
     {
         _currentState.ExitState(this);
 
