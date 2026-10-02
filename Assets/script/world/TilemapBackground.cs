@@ -18,7 +18,6 @@ public class TilemapBackground : MonoBehaviour
 
         TilemapRenderer renderer = tilemap.AddComponent<TilemapRenderer>();
 
-        grid.transform.localScale = new Vector3(0.2f, 0.2f, 1);
 
         PopulateBackground();
 
