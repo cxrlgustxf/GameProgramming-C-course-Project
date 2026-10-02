@@ -9,13 +9,19 @@ public class InputManager : MonoBehaviour
 
     public Vector2 MovementInput;
 
+
+    public bool IsMoving;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Awake()
     {
+        IsMoving = false;
         input = GetComponent<PlayerInput>();
         movementAction = input.actions["Move"];
 
+        movementAction.started += movement;
+        movementAction.canceled += movement;
 
     }
 
@@ -29,7 +35,11 @@ public class InputManager : MonoBehaviour
     }
 
 
-
+    void movement(InputAction.CallbackContext context)
+    {
+        if (context.started) { IsMoving = true; }
+        if (context.canceled){ IsMoving = false; }
+    }
 
 
 

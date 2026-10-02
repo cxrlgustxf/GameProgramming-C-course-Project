@@ -3,7 +3,9 @@ using UnityEngine;
 public class Animations : MonoBehaviour
 {
     public Animator animator;
-    
+
+    public float LastX;
+    public float LastY;
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -11,10 +13,27 @@ public class Animations : MonoBehaviour
 
 
 
-    public void SetAnimation(float movementx, float movementy)
+    public void SetAnimation(float movementx, float movementy, bool isWalking)
     {
-        animator.SetFloat("walk_x", movementx);
-        animator.SetFloat("walk_y", movementy);
+
+        if (isWalking) 
+        {
+            animator.SetFloat("CurrentInputX", movementx);
+            animator.SetFloat("CurrentInputY", movementy);
+            LastX = movementx;
+            LastY = movementy;
+            animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+
+            animator.SetFloat("LastInputX", LastX);
+            animator.SetFloat("LastInputY", LastY);
+            animator.SetBool("IsWalking", false);
+        }
+
 
     }
+
+
 }

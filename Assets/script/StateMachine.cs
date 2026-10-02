@@ -11,7 +11,8 @@ public class StateMachine : MonoBehaviour
 
     IState _currentState;
 
-    StateMove stateChase;
+    public StateMove stateMove;
+    public StateIdle stateIdle;
 
     void Awake()
     {
@@ -20,13 +21,13 @@ public class StateMachine : MonoBehaviour
         enemy = GetComponent<Enemy>();
         player = GetComponent<Player>();
 
-        stateChase = new StateMove();
-
+        stateMove = new StateMove();
+        stateIdle = new StateIdle();
 
         movement = new Movement();
         if (player != null)
         {
-            _currentState = stateChase;
+            _currentState = stateIdle;
         }
         
 
