@@ -11,12 +11,15 @@ public class Player : MonoBehaviour
 
     public CircleCollider2D attackArea;
 
+    public float AttackCooldown;
     void Start()
     {
         animations = GetComponent<Animations>();
         input = GetComponent<InputManager>();
         rb = GetComponent<Rigidbody2D>();
         attackArea = GetComponent<CircleCollider2D>();
+        
+
     }
 
 
@@ -25,18 +28,24 @@ public class Player : MonoBehaviour
         
     }
 
-
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-
         if (collision.gameObject.CompareTag("Enemy"))
         {
 
         }
+
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+
+    private bool Cooldown(float newTime)
     {
-        
+        if (AttackCooldown>0) {
+            AttackCooldown = newTime;
+            return false;
+        }
+        AttackCooldown -= Time.deltaTime;
+        return true;
+
     }
 }

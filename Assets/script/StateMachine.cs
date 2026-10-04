@@ -30,6 +30,7 @@ public class StateMachine : MonoBehaviour
             _currentState = stateIdle;
         }
         
+        
 
     }
 
@@ -50,4 +51,7 @@ public class StateMachine : MonoBehaviour
         _currentState.EnterState(this);
 
     }
+
+
+
 }
