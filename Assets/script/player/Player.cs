@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Windows;
 
 public class Player : MonoBehaviour
@@ -12,40 +14,48 @@ public class Player : MonoBehaviour
     public CircleCollider2D attackArea;
 
     public float AttackCooldown;
+
+    public PlayerStats stats;
+    [SerializeField]public float StatMultiplier;
     void Start()
     {
         animations = GetComponent<Animations>();
         input = GetComponent<InputManager>();
         rb = GetComponent<Rigidbody2D>();
         attackArea = GetComponent<CircleCollider2D>();
-        
 
+
+        stats = new PlayerStats();
+        
+        InitStats(StatMultiplier);
     }
 
 
     void Update()
     {
         
-    }
+        stats.HandleUpdates();
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
 
-        }
+        
 
     }
 
 
-    private bool Cooldown(float newTime)
-    {
-        if (AttackCooldown>0) {
-            AttackCooldown = newTime;
-            return false;
-        }
-        AttackCooldown -= Time.deltaTime;
-        return true;
 
+    private void InitStats(float multiplier)
+    {
+        stats.MaxHealth = 100 * multiplier;
+        stats.Health = stats.MaxHealth * 0.5f;
+        stats.HealthRegen = 1f * multiplier;
+
+        stats.Speed = 5f * multiplier;
+
+        stats.MaxMana = 100 * multiplier;
+        stats.Mana = stats.MaxMana * multiplier;
+        stats.ManaRegen = 0.3f * multiplier;
+
+
+        
     }
 }

@@ -6,17 +6,19 @@ public class TilemapBackground : MonoBehaviour
 {
   
     public AutoTile tile;
-    public Tilemap tilemap;
+    public Tilemap background;
+    public Tilemap fence;
     public Grid grid;
     void Start()
     {
         grid = new GameObject("Grid").AddComponent<Grid>();
 
-        tilemap = new GameObject("Background").AddComponent<Tilemap>();
-        tilemap.transform.SetParent(grid.transform);
-       
+        background = new GameObject("Background").AddComponent<Tilemap>();
+        fence = new GameObject("Fence").AddComponent<Tilemap>();
+        background.transform.SetParent(grid.transform);
+        fence.transform.SetParent(grid.transform);
 
-        TilemapRenderer renderer = tilemap.AddComponent<TilemapRenderer>();
+        TilemapRenderer renderer = background.AddComponent<TilemapRenderer>();
 
 
         PopulateBackground();
@@ -31,7 +33,7 @@ public class TilemapBackground : MonoBehaviour
         {
             for (int y = -150; y < WorldSize.y; y++)
             {
-                tilemap.SetTile(new Vector3Int(x, y, 0), tile);
+                background.SetTile(new Vector3Int(x, y, 0), tile);
 
             }
         }

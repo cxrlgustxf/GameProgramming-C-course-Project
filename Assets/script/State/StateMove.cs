@@ -11,14 +11,14 @@ public class StateMove : IState
     }
     public void ExitState(StateMachine cxt)
     {
-
+        cxt.player.rb.linearVelocity = Vector2.zero;
     }
     public void UpdateState(StateMachine cxt) 
     {
 
 
-        cxt.player.rb.linearVelocity = cxt.movement.GetMovement(cxt.player.input.MovementInput, 5f);
-        cxt.player.animations.SetAnimation(cxt.player.input.MovementInput.x, cxt.player.input.MovementInput.x, cxt.player.input.IsMoving);
+        cxt.player.rb.linearVelocity = cxt.movement.GetMovement(cxt.player.input.MovementInput, cxt.player.stats.Speed);
+        cxt.player.animations.SetAnimation(cxt.player.input.MovementInput.x, cxt.player.input.MovementInput.y, cxt.player.input.IsMoving);
 
         if (!cxt.player.input.IsMoving)
         {
