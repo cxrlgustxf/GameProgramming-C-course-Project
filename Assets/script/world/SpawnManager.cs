@@ -48,4 +48,6 @@ public static class SpawnerEvents
 {
     public static event Action<int> EnemiesFragged;
 
+    
+
 }
