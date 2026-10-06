@@ -26,6 +26,7 @@ public class Enemy: MonoBehaviour
 
     public CircleCollider2D PlayerScan;
 
+    public SpriteRenderer ActiveSprite;
 
 
     public AttackType attackType;
@@ -33,6 +34,7 @@ public class Enemy: MonoBehaviour
     void Awake()
     {
 
+        ActiveSprite = GetComponent<SpriteRenderer>();
         PlayerScan = GetComponent<CircleCollider2D>();
         Health = _object.Health;
         Speed = _object.Speed;
@@ -49,7 +51,7 @@ public class Enemy: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Player>(out Player player))
+        if (collision.gameObject.CompareTag("player"))
         {
 
         }

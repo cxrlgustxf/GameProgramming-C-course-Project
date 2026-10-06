@@ -10,6 +10,10 @@ public class WorldManager : MonoBehaviour
     [SerializeField] GameObject GameUI;
     private EnemySpawnManager spawnManager;
 
+    public StateCountdown stateCountdown;
+
+    public StateWaveActive stateWaveActive;
+
 
     void Start()
     {
@@ -25,6 +29,18 @@ public class WorldManager : MonoBehaviour
     void Update()
     {
         
+        
+        
+    }
+
+
+
+    void CountdownWave()
+    {
+        if (spawnManager.WaveCountdown > 0)
+        {
+            spawnManager.WaveCountdown -= Time.deltaTime;
+        }
     }
 
 }

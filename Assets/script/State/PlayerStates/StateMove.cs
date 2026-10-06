@@ -22,7 +22,7 @@ public class StateMove : IState
 
         if (!cxt.player.input.IsMoving)
         {
-            cxt.ChangeState(cxt.stateIdle);
+            cxt.ChangeState(cxt.player.stateIdle);
 
         }
 

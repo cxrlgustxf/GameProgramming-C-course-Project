@@ -9,10 +9,11 @@ public class StateMachine : MonoBehaviour
     public Enemy enemy;
     public Player player;
 
+    public WorldManager worldManager;
+
     IState _currentState;
 
-    public StateMove stateMove;
-    public StateIdle stateIdle;
+
 
     void Awake()
     {
@@ -20,14 +21,13 @@ public class StateMachine : MonoBehaviour
 
         enemy = GetComponent<Enemy>();
         player = GetComponent<Player>();
+        worldManager = GetComponent<WorldManager>();
 
-        stateMove = new StateMove();
-        stateIdle = new StateIdle();
-
+    
         movement = new Movement();
         if (player != null)
         {
-            _currentState = stateIdle;
+            _currentState = player.stateIdle;
         }
         
         

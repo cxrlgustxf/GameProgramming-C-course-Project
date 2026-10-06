@@ -17,6 +17,10 @@ public class Player : MonoBehaviour
 
     public PlayerStats stats;
     [SerializeField]public float StatMultiplier;
+
+    public StateIdle stateIdle;
+    public StateMove stateMove;
+    
     void Start()
     {
         animations = GetComponent<Animations>();

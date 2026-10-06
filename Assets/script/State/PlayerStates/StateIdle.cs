@@ -18,7 +18,7 @@ public class StateIdle : IState
 
         if (cxt.player.input.IsMoving)
         {
-            cxt.ChangeState(cxt.stateMove);
+            cxt.ChangeState(cxt.player.stateMove);
         }
     }
 }
