@@ -6,18 +6,22 @@ public class InGameUI : MonoBehaviour
 {
 
     [SerializeField] Image HealthBar;
-    void Start()
+    void Awake()
     {
         EventsUI.OnHealthChanged += UpdateHealthBar;
 
     }
 
-    // Update is called once per frame
+
     
     void UpdateHealthBar(float newHP)
     {
         HealthBar.fillAmount = newHP / 100f;
     }
+
+        void OnDestroy(){
+            EventsUI.OnHealthChanged -= UpdateHealthBar;
+        }
 }
 
 public static class EventsUI

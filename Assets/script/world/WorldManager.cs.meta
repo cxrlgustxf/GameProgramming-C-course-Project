@@ -5,6 +5,8 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - playerPrefab: {fileID: 7064562798220495080, guid: 8144cdd7158b2054091f5a6ced417315, type: 3}
+  - EnemySpawner: {instanceID: 0}
+  - GameUI: {fileID: 6154838017831242807, guid: 069995b64cdb26a4da55ab053f1f93a8, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
