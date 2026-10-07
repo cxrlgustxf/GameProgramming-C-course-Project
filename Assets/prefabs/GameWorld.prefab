@@ -51,8 +51,9 @@ MonoBehaviour:
   - {fileID: 1969452747495190342, guid: 4c56a443d3499ec49adf483c178e35b4, type: 3}
   - {fileID: 1969452747495190342, guid: 4c56a443d3499ec49adf483c178e35b4, type: 3}
   - {fileID: 1969452747495190342, guid: 4c56a443d3499ec49adf483c178e35b4, type: 3}
-  EnemySpawner: {fileID: 0}
+  EnemySpawner: {fileID: 8328862036151580653, guid: 46267358a3dfec44b852e05a23758668, type: 3}
   GameUI: {fileID: 6154838017831242807, guid: 069995b64cdb26a4da55ab053f1f93a8, type: 3}
+  Countdown: 0
 --- !u!114 &3746533392871804516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,3 +84,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StateMachine
   enemy: {fileID: 0}
   player: {fileID: 0}
+  worldManager: {fileID: 0}

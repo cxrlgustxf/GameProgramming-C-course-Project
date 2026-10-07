@@ -5,11 +5,9 @@ public class StateCountdown : IState
 {
     
 
-    public float Timer;
-
     public void EnterState(StateMachine cxt)
     {
-        Timer = 10f;
+        cxt.worldManager.Countdown = 10f;
     }
     public void ExitState(StateMachine cxt)
     {
@@ -18,11 +16,15 @@ public class StateCountdown : IState
 
     public void UpdateState(StateMachine cxt)
     {
-        Timer -= Time.deltaTime;
+      if  (cxt.worldManager.Countdown >= 0) 
+        {
+            cxt.worldManager.Countdown -= Time.deltaTime;
+        }
 
-        Mathf.Clamp(Timer, 0, 10);
 
-        if(Timer == 0)
+        cxt.worldManager.Countdown = Mathf.Clamp(cxt.worldManager.Countdown, 0f, 10f);
+
+        if (cxt.worldManager.Countdown == 0f)
         {
             cxt.ChangeState(cxt.worldManager.stateWaveActive);
         }

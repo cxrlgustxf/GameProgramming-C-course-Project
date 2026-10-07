@@ -8,18 +8,25 @@ public class WorldManager : MonoBehaviour
     [SerializeField] GameObject EnemySpawner;
 
     [SerializeField] GameObject GameUI;
-    private EnemySpawnManager spawnManager;
 
     public StateCountdown stateCountdown;
 
     public StateWaveActive stateWaveActive;
 
+    
 
+    public float Countdown;
+
+    void Awake()
+    {
+        stateCountdown = new StateCountdown();
+        stateWaveActive = new StateWaveActive();
+    }
     void Start()
     {
         Instantiate(GameUI, Vector2.zero, Quaternion.identity);
         Instantiate(playerPrefab, Vector2.zero, Quaternion.identity);
-        spawnManager = new EnemySpawnManager();
+        Instantiate(EnemySpawner, Vector2.zero, Quaternion.identity);
 
 
     }
@@ -35,13 +42,7 @@ public class WorldManager : MonoBehaviour
 
 
 
-    void CountdownWave()
-    {
-        if (spawnManager.WaveCountdown > 0)
-        {
-            spawnManager.WaveCountdown -= Time.deltaTime;
-        }
-    }
+
 
 }
 

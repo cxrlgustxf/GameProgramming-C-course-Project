@@ -13,24 +13,36 @@ public class StateMachine : MonoBehaviour
 
     IState _currentState;
 
-
-
-    void Awake()
+    private void Awake()
     {
-        
-
         enemy = GetComponent<Enemy>();
         player = GetComponent<Player>();
         worldManager = GetComponent<WorldManager>();
 
-    
+
         movement = new Movement();
+
+    }
+
+    void Start()
+    {
+        
+
+
         if (player != null)
         {
+            
             _currentState = player.stateIdle;
+
         }
-        
-        
+
+        if (worldManager != null) {
+
+            _currentState = worldManager.stateCountdown;
+
+        }
+        _currentState.EnterState(this);
+
 
     }
 

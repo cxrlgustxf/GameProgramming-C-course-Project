@@ -13,6 +13,6 @@ public class StateWaveActive : IState
     }
     public void UpdateState(StateMachine cxt)
     {
-        
+
     }
 }

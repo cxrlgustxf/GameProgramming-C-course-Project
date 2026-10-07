@@ -1,12 +1,10 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Windows;
 
 public class Player : MonoBehaviour
 {
 
-
+    public List<SOItem> Weapon = new List<SOItem>();
     public Rigidbody2D rb;
     public Animations animations;
     public InputManager input;
@@ -20,14 +18,18 @@ public class Player : MonoBehaviour
 
     public StateIdle stateIdle;
     public StateMove stateMove;
+
+     
     
-    void Start()
+    void Awake()
     {
         animations = GetComponent<Animations>();
         input = GetComponent<InputManager>();
         rb = GetComponent<Rigidbody2D>();
         attackArea = GetComponent<CircleCollider2D>();
 
+        stateIdle = new StateIdle();
+        stateMove= new StateMove();
 
         stats = new PlayerStats();
         
@@ -62,4 +64,6 @@ public class Player : MonoBehaviour
 
         
     }
+
+
 }
