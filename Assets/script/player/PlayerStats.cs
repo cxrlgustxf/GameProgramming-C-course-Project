@@ -22,7 +22,12 @@ public class PlayerStats
 
     public Image HealthBar;
 
+    private float PlayerEXP;
 
+    public float NextLevelUp;
+    public float PlayerLevel;
+
+    
     public void HandleUpdates()
     {
         regenHealth(HealthRegen, Time.deltaTime);
@@ -41,6 +46,23 @@ public class PlayerStats
             EventsUI.HealthHasChanged(Health);
             }
         
+    }
+
+    public void GainEXP(int EXP)
+    {
+        PlayerEXP += EXP;
+
+        EventsUI.EXPHasChanged(EXP);
+        if (PlayerEXP >= NextLevelUp)
+        {
+            NextLevelUp = NextLevelUp * 1.2f;
+
+        }
+    }
+    public void LevelUp()
+    {
+        
+
     }
 
     public void Heal(float healAmount)

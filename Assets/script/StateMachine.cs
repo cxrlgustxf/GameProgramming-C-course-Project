@@ -41,6 +41,11 @@ public class StateMachine : MonoBehaviour
             _currentState = worldManager.stateCountdown;
 
         }
+
+        if (enemy != null) {
+
+            _currentState = enemy.stateChase;
+        }
         _currentState.EnterState(this);
 
 

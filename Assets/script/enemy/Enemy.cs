@@ -30,6 +30,8 @@ public class Enemy: MonoBehaviour
 
 
     public AttackType attackType;
+
+    public EnemyStateChase stateChase;
     
     void Awake()
     {
@@ -45,13 +47,14 @@ public class Enemy: MonoBehaviour
         AttackRange = _object.AttackRange;
         attackType = _object.attackType;
 
+        stateChase = new EnemyStateChase();
 
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
 
         }
