@@ -17,5 +17,14 @@ public class SOItem : ScriptableObject
     public float AttackSpeed;
 
     public float AttackRate;
-    
+    public ItemType itemType;
+}
+
+public enum ItemType
+{
+    MELEE,
+    RANGED,
+    HEAL,
+
+
 }

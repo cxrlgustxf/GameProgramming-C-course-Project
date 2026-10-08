@@ -18,7 +18,7 @@ public class StateMove : IState
 
 
         cxt.player.rb.linearVelocity = cxt.movement.GetMovement(cxt.player.input.MovementInput, cxt.player.stats.Speed);
-        cxt.player.animations.SetAnimation(cxt.player.input.MovementInput.x, cxt.player.input.MovementInput.y, cxt.player.input.IsMoving);
+        cxt.player.animations.SetWalkAnimation(cxt.player.input.MovementInput.x, cxt.player.input.MovementInput.y, cxt.player.input.IsMoving);
 
         if (!cxt.player.input.IsMoving)
         {

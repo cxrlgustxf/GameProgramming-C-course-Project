@@ -26,8 +26,23 @@ public class Item : MonoBehaviour
 
     void Awake()
     {
+
+        _Damage = item.Damage;
+        _Penetration = item.Penetration;
+        _ProjectileRange = item.ProjectileRange;
+        _ProjectileAmount = item.ProjectileAmount;
+        _AttackSpeed = item.AttackSpeed;
+        _AttackRate = item.AttackRate;
+        _animation = item.animation;
+
+
+
         _icon = GetComponent<SpriteRenderer>();
+
+
         _icon.sprite = item.icon;
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,12 +51,44 @@ public class Item : MonoBehaviour
         {
 
             var player = collision.gameObject.GetComponent<Player>();
-            player.Weapon.Add(item);
-            Destroy(gameObject);
+
+            switch(item.itemType){
+
+                case ItemType.MELEE:
+                    player.Weapon.Add(item);
+
+                    Destroy(gameObject);
+
+                    break;
+
+                case ItemType.RANGED:
+                    player.Weapon.Add(item);
+
+                    Destroy(gameObject);
+
+                    break;
+
+
+                case ItemType.HEAL:
+
+                    player.stats.Heal(_Damage);
+                    Destroy(gameObject);
+                    break;
+
+                default:
+                    Debug.Log("NO ITEM TYPE FOUND");
+                    Destroy(gameObject);
+                    break;
+            }
+                
+ 
+            
+            
+            
 
         };
 
-        Debug.Log("Hit");
+        
 
         
     }

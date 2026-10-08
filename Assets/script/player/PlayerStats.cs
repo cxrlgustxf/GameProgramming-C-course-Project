@@ -1,3 +1,4 @@
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UI;
 public class PlayerStats
@@ -42,7 +43,11 @@ public class PlayerStats
         
     }
 
-
+    public void Heal(float healAmount)
+    {
+        Health += healAmount;
+        EventsUI.HealthHasChanged(Health);
+    }
     public void TakeDamage(float damageAmount)
     {
 

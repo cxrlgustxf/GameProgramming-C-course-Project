@@ -14,13 +14,13 @@ public class Player : MonoBehaviour
     public float AttackCooldown;
 
     public PlayerStats stats;
-    [SerializeField]public float StatMultiplier;
+    [SerializeField] public float StatMultiplier;
 
     public StateIdle stateIdle;
     public StateMove stateMove;
 
-     
-    
+
+
     void Awake()
     {
         animations = GetComponent<Animations>();
@@ -29,21 +29,21 @@ public class Player : MonoBehaviour
         attackArea = GetComponent<CircleCollider2D>();
 
         stateIdle = new StateIdle();
-        stateMove= new StateMove();
+        stateMove = new StateMove();
 
         stats = new PlayerStats();
-        
+
         InitStats(StatMultiplier);
     }
 
 
     void Update()
     {
-        
+
         stats.HandleUpdates();
 
 
-        
+
 
     }
 
@@ -62,7 +62,12 @@ public class Player : MonoBehaviour
         stats.ManaRegen = 0.3f * multiplier;
 
 
-        
+
+    }
+
+    private void weaponPickup()
+    {
+
     }
 
 

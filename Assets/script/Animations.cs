@@ -13,7 +13,7 @@ public class Animations : MonoBehaviour
 
 
 
-    public void SetAnimation(float movementx, float movementy, bool isWalking)
+    public void SetWalkAnimation(float movementx, float movementy, bool isWalking)
     {
 
         if (isWalking) 
@@ -34,6 +34,9 @@ public class Animations : MonoBehaviour
 
 
     }
+
+
+    
 
 
 }
