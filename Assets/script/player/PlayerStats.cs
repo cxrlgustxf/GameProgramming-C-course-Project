@@ -1,3 +1,4 @@
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,6 +33,7 @@ public class PlayerStats
     {
         regenHealth(HealthRegen, Time.deltaTime);
         TickInvincibility();
+        InitStats(1f);
     }
 
 
@@ -93,5 +95,21 @@ public class PlayerStats
         }
         
     }
-    
+
+    private void InitStats(float multiplier)
+    {
+        MaxHealth = 100 * multiplier;
+        Health = MaxHealth * 0.5f;
+        HealthRegen = 1f * multiplier;
+
+        Speed = 5f * multiplier;
+
+        MaxMana = 100 * multiplier;
+        Mana = MaxMana * multiplier;
+        ManaRegen = 0.3f * multiplier;
+        PlayerEXP = 0;
+
+        EventsUI.HealthHasChanged(Health);
+        EventsUI.EXPHasChanged(PlayerEXP);
+    }
 }

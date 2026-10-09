@@ -150,9 +150,9 @@ TextureImporter:
       name: UI_CSharp_Course-Sheet_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 129
-        width: 22
+        x: 2
+        y: 156
+        width: 48
         height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -172,10 +172,10 @@ TextureImporter:
       name: UI_CSharp_Course-Sheet_1
       rect:
         serializedVersion: 2
-        x: 34
-        y: 129
-        width: 22
-        height: 11
+        x: 9
+        y: 123
+        width: 111
+        height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,10 +194,10 @@ TextureImporter:
       name: UI_CSharp_Course-Sheet_2
       rect:
         serializedVersion: 2
-        x: 2
-        y: 108
-        width: 48
-        height: 11
+        x: 3
+        y: 93
+        width: 91
+        height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,10 +216,10 @@ TextureImporter:
       name: UI_CSharp_Course-Sheet_3
       rect:
         serializedVersion: 2
-        x: 12
-        y: 87
-        width: 36
-        height: 3
+        x: 11
+        y: 177
+        width: 22
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,12 +326,12 @@ TextureImporter:
       name: UI_CSharp_Course-Sheet_8
       rect:
         serializedVersion: 2
-        x: 11
-        y: 70
-        width: 41
-        height: 5
+        x: 13
+        y: 64
+        width: 36
+        height: 3
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

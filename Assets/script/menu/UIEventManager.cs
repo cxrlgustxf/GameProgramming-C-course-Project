@@ -28,14 +28,14 @@ public static class EventsUI
 {
 
     public static event Action<float> OnHealthChanged;
-    public static event Action<int> OnEXPGained;
+    public static event Action<float> OnEXPGained;
 
     public static void HealthHasChanged(float newHPValue)
     {
         OnHealthChanged.Invoke(newHPValue);
     }
     
-    public static void EXPHasChanged(int GainedEXP)
+    public static void EXPHasChanged(float GainedEXP)
     {
         OnEXPGained.Invoke(GainedEXP);
     }
