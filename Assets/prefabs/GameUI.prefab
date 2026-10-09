@@ -419,3 +419,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InGameUI
   HealthBar: {fileID: 4610120283640720000}
+  EXPBar: {fileID: 7831876630409947540}

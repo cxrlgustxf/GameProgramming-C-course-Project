@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public float AttackCooldown;
 
     public PlayerStats stats;
-    [SerializeField] public float StatMultiplier;
+
 
     public StateIdle stateIdle;
     public StateMove stateMove;
@@ -35,10 +35,13 @@ public class Player : MonoBehaviour
 
         stats = new PlayerStats();
 
-        InitStats(StatMultiplier);
+        
     }
 
-
+    void Start()
+    {
+        stats.InitStats(1f);
+    }
     void Update()
     {
 
@@ -51,21 +54,7 @@ public class Player : MonoBehaviour
 
 
 
-    private void InitStats(float multiplier)
-    {
-        stats.MaxHealth = 100 * multiplier;
-        stats.Health = stats.MaxHealth * 0.5f;
-        stats.HealthRegen = 1f * multiplier;
 
-        stats.Speed = 5f * multiplier;
-
-        stats.MaxMana = 100 * multiplier;
-        stats.Mana = stats.MaxMana * multiplier;
-        stats.ManaRegen = 0.3f * multiplier;
-
-
-
-    }
 
     private void weaponPickup()
     {

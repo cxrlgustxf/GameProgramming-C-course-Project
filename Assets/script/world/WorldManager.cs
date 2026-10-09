@@ -21,12 +21,14 @@ public class WorldManager : MonoBehaviour
     {
         stateCountdown = new StateCountdown();
         stateWaveActive = new StateWaveActive();
-    }
-    void Start()
-    {
+
         Instantiate(GameUI, Vector2.zero, Quaternion.identity);
         Instantiate(playerPrefab, Vector2.zero, Quaternion.identity);
         Instantiate(EnemySpawner, Vector2.zero, Quaternion.identity);
+    }
+    void Start()
+    {
+
 
 
     }

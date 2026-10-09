@@ -23,7 +23,7 @@ public class PlayerStats
 
     public Image HealthBar;
 
-    private float PlayerEXP;
+    public float PlayerEXP;
 
     public float NextLevelUp;
     public float PlayerLevel;
@@ -33,7 +33,7 @@ public class PlayerStats
     {
         regenHealth(HealthRegen, Time.deltaTime);
         TickInvincibility();
-        InitStats(1f);
+        
     }
 
 
@@ -61,6 +61,9 @@ public class PlayerStats
 
         }
     }
+
+
+
     public void LevelUp()
     {
         
@@ -96,7 +99,7 @@ public class PlayerStats
         
     }
 
-    private void InitStats(float multiplier)
+    public void InitStats(float multiplier)
     {
         MaxHealth = 100 * multiplier;
         Health = MaxHealth * 0.5f;
@@ -107,7 +110,7 @@ public class PlayerStats
         MaxMana = 100 * multiplier;
         Mana = MaxMana * multiplier;
         ManaRegen = 0.3f * multiplier;
-        PlayerEXP = 0;
+        PlayerEXP = 0f;
 
         EventsUI.HealthHasChanged(Health);
         EventsUI.EXPHasChanged(PlayerEXP);

@@ -6,10 +6,12 @@ public class InGameUI : MonoBehaviour
 {
 
     [SerializeField] Image HealthBar;
+    [SerializeField] Image EXPBar;
     void Awake()
     {
+        
         EventsUI.OnHealthChanged += UpdateHealthBar;
-
+        EventsUI.OnEXPGained += UpdateEXPBar;
     }
 
 
@@ -19,9 +21,17 @@ public class InGameUI : MonoBehaviour
         HealthBar.fillAmount = newHP / 100f;
     }
 
-        void OnDestroy(){
-            EventsUI.OnHealthChanged -= UpdateHealthBar;
-        }
+
+
+    void UpdateEXPBar(float Amount)
+    {
+        EXPBar.fillAmount = Amount / 100f;
+    }
+    void OnDestroy()
+    {
+        EventsUI.OnHealthChanged -= UpdateHealthBar;
+        EventsUI.OnEXPGained -= UpdateEXPBar;
+    }
 }
 
 public static class EventsUI
@@ -32,12 +42,12 @@ public static class EventsUI
 
     public static void HealthHasChanged(float newHPValue)
     {
-        OnHealthChanged.Invoke(newHPValue);
+        OnHealthChanged?.Invoke(newHPValue);
     }
     
-    public static void EXPHasChanged(float GainedEXP)
+    public static void EXPHasChanged(float GainedXP)
     {
-        OnEXPGained.Invoke(GainedEXP);
+        OnEXPGained?.Invoke(GainedXP);
     }
 
 }
