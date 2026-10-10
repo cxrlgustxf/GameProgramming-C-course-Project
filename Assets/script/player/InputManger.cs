@@ -41,7 +41,11 @@ public class InputManager : MonoBehaviour
         if (context.canceled){ IsMoving = false; }
     }
 
-
+    private void OnDestroy()
+    {
+        movementAction.started -= movement;
+        movementAction.canceled -= movement;
+    }
 
 
 }
