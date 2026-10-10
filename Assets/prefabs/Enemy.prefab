@@ -60,6 +60,7 @@ MonoBehaviour:
   MoveTarget: {x: 0, y: 0}
   ShootTarget: {x: 0, y: 0}
   PlayerScan: {fileID: 0}
+  ActiveSprite: {fileID: 0}
   attackType: 0
 --- !u!114 &4580823472691841971
 MonoBehaviour:
@@ -198,7 +199,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 3225832317793331946, guid: aa28224e90c1652428b42df33b5a10c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -206,5 +207,5 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
