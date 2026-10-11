@@ -45,7 +45,7 @@ public class Item : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -56,7 +56,7 @@ public class Item : MonoBehaviour
 
                 case ItemType.MELEE:
                     player.Weapon.Add(item);
-
+                    
                     Destroy(gameObject);
 
                     break;

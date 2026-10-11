@@ -82,7 +82,7 @@ public class PlayerStats
         {
         Health -= damageAmount;
         Health = Mathf.Clamp(Health, 0, MaxHealth);
-        InvincibilityTime = 0.4f;
+        InvincibilityTime = 0.5f;
         EventsUI.HealthHasChanged(Health);
         }
 
@@ -94,7 +94,7 @@ public class PlayerStats
         if (InvincibilityTime > 0)
         {
             InvincibilityTime -= Time.deltaTime;
-            Mathf.Clamp(InvincibilityTime, 0, 2);        
+            InvincibilityTime = Mathf.Clamp(InvincibilityTime, 0, 2);        
         }
         
     }

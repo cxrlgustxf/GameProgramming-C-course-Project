@@ -52,12 +52,13 @@ public class Enemy: MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             var player = collision.gameObject.GetComponent<Player>();
-            player.stats.TakeDamage(100);
+            player.stats.TakeDamage(10);
+            Debug.Log("DEALT DAMAGE!!");
         }
     }
 
