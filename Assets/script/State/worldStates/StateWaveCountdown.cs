@@ -8,10 +8,11 @@ public class StateCountdown : IState
     public void EnterState(StateMachine cxt)
     {
         cxt.worldManager.Countdown = 10f;
+        EventsUI.ToggleVisibilityForCounter(true);
     }
     public void ExitState(StateMachine cxt)
     {
-        
+        EventsUI.ToggleVisibilityForCounter(false);
     }
 
     public void UpdateState(StateMachine cxt)

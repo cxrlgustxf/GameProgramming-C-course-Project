@@ -15,7 +15,7 @@ public class InGameUI : MonoBehaviour
         EventsUI.OnHealthChanged += UpdateHealthBar;
         EventsUI.OnEXPGained += UpdateEXPBar;
         EventsUI.OnCountdownActive += UpdateCountdown;
-        
+        EventsUI.OnToggleCounter += SetCountdownVisibility;
     }
 
 
@@ -31,9 +31,10 @@ public class InGameUI : MonoBehaviour
         CountdownUI.text = TimeLeft.ToString();
     }
 
-    void SetCountdownVisible(bool visible) 
+    void SetCountdownVisibility(bool visible) 
     
-    { 
+    {
+        CountdownUI.gameObject.SetActive(visible);
     }
     void UpdateEXPBar(float Amount)
     {
@@ -44,12 +45,14 @@ public class InGameUI : MonoBehaviour
         EventsUI.OnHealthChanged -= UpdateHealthBar;
         EventsUI.OnEXPGained -= UpdateEXPBar;
         EventsUI.OnCountdownActive -= UpdateCountdown;
+        EventsUI.OnToggleCounter -= SetCountdownVisibility;
     }
 }
 
 public static class EventsUI
 {
 
+    public static event Action<bool> OnToggleCounter;
     public static event Action<float> OnCountdownActive;
     public static event Action<float> OnHealthChanged;
     public static event Action<float> OnEXPGained;
@@ -67,6 +70,11 @@ public static class EventsUI
     public static void CountdownActive(float TimeLeft)
     {
         OnCountdownActive?.Invoke(TimeLeft);
+    }
+
+    public static void ToggleVisibilityForCounter(bool visible)
+    {
+        OnToggleCounter?.Invoke(visible);
     }
 
 }

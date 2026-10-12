@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de9ad2bba2cdd14684bfd8737582bf6, type: 3}
   m_Name: Heal
   m_EditorClassIdentifier: Assembly-CSharp::SOItem
-  icon: {fileID: -387570636, guid: 0b04623190554b947ae401765dc391c1, type: 3}
+  icon: {fileID: -155522776, guid: 0b04623190554b947ae401765dc391c1, type: 3}
   animation: {fileID: 0}
   Damage: 30
   Penetration: 0
