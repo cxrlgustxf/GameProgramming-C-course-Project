@@ -31,7 +31,12 @@ public class Enemy: MonoBehaviour
 
     public AttackType attackType;
 
+    public EnemyStateFind stateFind;
+
     public EnemyStateChase stateChase;
+    public EnemyStateDead stateDead;
+
+
     
     void Awake()
     {
@@ -48,20 +53,49 @@ public class Enemy: MonoBehaviour
         attackType = _object.attackType;
 
         stateChase = new EnemyStateChase();
+        stateFind = new EnemyStateFind();
+        stateDead = new EnemyStateDead();
 
+        
     }
 
+    
+    
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && attackType == AttackType.MELEE)
         {
             var player = collision.gameObject.GetComponent<Player>();
-            player.stats.TakeDamage(10);
-            Debug.Log("DEALT DAMAGE!!");
+            player.stats.TakeDamage(AttackDamage);
+            
         }
     }
 
+    public Vector2 FindPlayer()
+    {
 
+        float castRadius = 100.0f;
+        float castDistance = 5.0f;
+        LayerMask detectionLayers = -1;
+        Vector2 origin = transform.position;
+        Vector2 direction = transform.right;
+
+        RaycastHit2D hit = Physics2D.CircleCast(
+        origin,
+        castRadius,
+        direction,
+        castDistance,
+        detectionLayers
+        
+        );
+
+        if (hit.collider == hit.collider.gameObject.CompareTag("Player")) {
+            Vector2 playerPos = hit.collider.gameObject.transform.position;
+            return playerPos;
+        }
+        return Vector2.zero;
+
+    }
 
 }

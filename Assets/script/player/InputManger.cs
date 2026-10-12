@@ -18,11 +18,16 @@ public class InputManager : MonoBehaviour
     {
         IsMoving = false;
         input = GetComponent<PlayerInput>();
+
+    }
+
+    void Start()
+    {
+        
         movementAction = input.actions["Move"];
 
         movementAction.started += movement;
         movementAction.canceled += movement;
-
     }
 
     // Update is called once per frame

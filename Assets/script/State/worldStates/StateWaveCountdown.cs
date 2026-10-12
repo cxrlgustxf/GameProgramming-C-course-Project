@@ -18,12 +18,13 @@ public class StateCountdown : IState
     {
       if  (cxt.worldManager.Countdown >= 0) 
         {
+            
             cxt.worldManager.Countdown -= Time.deltaTime;
         }
 
 
         cxt.worldManager.Countdown = Mathf.Clamp(cxt.worldManager.Countdown, 0f, 10f);
-
+        EventsUI.CountdownActive(Mathf.RoundToInt(cxt.worldManager.Countdown));
         if (cxt.worldManager.Countdown == 0f)
         {
             cxt.ChangeState(cxt.worldManager.stateWaveActive);

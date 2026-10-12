@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,11 +8,14 @@ public class InGameUI : MonoBehaviour
 
     [SerializeField] Image HealthBar;
     [SerializeField] Image EXPBar;
+    [SerializeField] TextMeshProUGUI CountdownUI;
     void Awake()
     {
         
         EventsUI.OnHealthChanged += UpdateHealthBar;
         EventsUI.OnEXPGained += UpdateEXPBar;
+        EventsUI.OnCountdownActive += UpdateCountdown;
+        
     }
 
 
@@ -22,7 +26,15 @@ public class InGameUI : MonoBehaviour
     }
 
 
+    void UpdateCountdown(float TimeLeft)
+    {
+        CountdownUI.text = TimeLeft.ToString();
+    }
 
+    void SetCountdownVisible(bool visible) 
+    
+    { 
+    }
     void UpdateEXPBar(float Amount)
     {
         EXPBar.fillAmount = Amount / 100f;
@@ -31,12 +43,14 @@ public class InGameUI : MonoBehaviour
     {
         EventsUI.OnHealthChanged -= UpdateHealthBar;
         EventsUI.OnEXPGained -= UpdateEXPBar;
+        EventsUI.OnCountdownActive -= UpdateCountdown;
     }
 }
 
 public static class EventsUI
 {
 
+    public static event Action<float> OnCountdownActive;
     public static event Action<float> OnHealthChanged;
     public static event Action<float> OnEXPGained;
 
@@ -48,6 +62,11 @@ public static class EventsUI
     public static void EXPHasChanged(float GainedXP)
     {
         OnEXPGained?.Invoke(GainedXP);
+    }
+
+    public static void CountdownActive(float TimeLeft)
+    {
+        OnCountdownActive?.Invoke(TimeLeft);
     }
 
 }
