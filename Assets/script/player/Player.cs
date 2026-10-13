@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     public StateIdle stateIdle;
     public StateMove stateMove;
 
-    
 
 
 

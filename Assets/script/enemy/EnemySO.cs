@@ -22,7 +22,7 @@ public class EnemySO : ScriptableObject
     public float AttackRange;
     public float AttackDamage;
 
-
+    public float EXPReward;
 
     public AttackType attackType;
     

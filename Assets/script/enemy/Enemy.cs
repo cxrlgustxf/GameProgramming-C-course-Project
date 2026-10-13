@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Enemy: MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class Enemy: MonoBehaviour
 
     [SerializeField]public EnemySO _object;
 
+
+    public Rigidbody2D rb;
     public float Health;
 
     public float Speed;
@@ -19,11 +22,11 @@ public class Enemy: MonoBehaviour
     public float AttackRange;
     public float AttackDamage;
 
-    public Vector2 MoveTarget;
+    public Transform MoveTarget;
 
     public Vector2 ShootTarget;
 
-
+    
     public CircleCollider2D PlayerScan;
 
     public SpriteRenderer ActiveSprite;
@@ -31,7 +34,6 @@ public class Enemy: MonoBehaviour
 
     public AttackType attackType;
 
-    public EnemyStateFind stateFind;
 
     public EnemyStateChase stateChase;
     public EnemyStateDead stateDead;
@@ -43,9 +45,11 @@ public class Enemy: MonoBehaviour
 
         ActiveSprite = GetComponent<SpriteRenderer>();
         PlayerScan = GetComponent<CircleCollider2D>();
+        rb = GetComponent<Rigidbody2D>();
         Health = _object.Health;
         Speed = _object.Speed;
         Scale = _object.Scale;
+        
         AttackDamage = _object.AttackDamage;
         AttackSpeed = _object.AttackSpeed;
         ProjectileSpeed = _object.ProjectileSpeed;
@@ -53,7 +57,6 @@ public class Enemy: MonoBehaviour
         attackType = _object.attackType;
 
         stateChase = new EnemyStateChase();
-        stateFind = new EnemyStateFind();
         stateDead = new EnemyStateDead();
 
         
@@ -61,6 +64,11 @@ public class Enemy: MonoBehaviour
 
     
     
+    void Start()
+    {
+        MoveTarget = GameObject.FindWithTag("Player").transform;
+    }
+
 
     private void OnTriggerStay2D(Collider2D collision)
     {

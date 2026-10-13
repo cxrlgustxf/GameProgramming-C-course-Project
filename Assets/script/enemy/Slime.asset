@@ -19,4 +19,5 @@ MonoBehaviour:
   ProjectileSpeed: 0
   AttackRange: 0
   AttackDamage: 5
+  EXPReward: 10
   attackType: 2
