@@ -49,10 +49,8 @@ MonoBehaviour:
   playerPrefab: {fileID: 7064562798220495080, guid: 8144cdd7158b2054091f5a6ced417315, type: 3}
   EnemyPrefabs:
   - {fileID: 1969452747495190342, guid: 4c56a443d3499ec49adf483c178e35b4, type: 3}
-  - {fileID: 1969452747495190342, guid: 4c56a443d3499ec49adf483c178e35b4, type: 3}
-  - {fileID: 1969452747495190342, guid: 4c56a443d3499ec49adf483c178e35b4, type: 3}
-  EnemySpawner: {fileID: 8328862036151580653, guid: 46267358a3dfec44b852e05a23758668, type: 3}
   GameUI: {fileID: 6154838017831242807, guid: 069995b64cdb26a4da55ab053f1f93a8, type: 3}
+  player: {fileID: 0}
   Countdown: 0
 --- !u!114 &3746533392871804516
 MonoBehaviour:

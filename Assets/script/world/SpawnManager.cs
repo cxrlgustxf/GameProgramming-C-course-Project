@@ -4,10 +4,20 @@ public class SpawnManager
 {
 
 
-    public int CurrentWave = 1;
     public int MaxEnemies = 10;
-    public int StatMultiplier = 1;
 
 
+    public float stats;
+
+
+    public void WaveMultiplier(int waves) 
+    {
+
+        MaxEnemies += 5;
+        MaxEnemies = Mathf.Clamp(MaxEnemies, 10, 100);
+        
+
+
+    }
 
 }

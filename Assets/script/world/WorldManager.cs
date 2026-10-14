@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 public class WorldManager : MonoBehaviour
 {
 
     [SerializeField] GameObject playerPrefab;
-    [SerializeField] GameObject[] EnemyPrefabs;
-    [SerializeField] GameObject EnemySpawner;
+    [SerializeField] public GameObject[] EnemyPrefabs;
+
 
     [SerializeField] GameObject GameUI;
 
@@ -13,9 +15,12 @@ public class WorldManager : MonoBehaviour
 
     public StateWaveActive stateWaveActive;
 
-    
+    public GameObject player;
 
     public float Countdown;
+
+    public int Wave;
+
 
     void Awake()
     {
@@ -24,11 +29,11 @@ public class WorldManager : MonoBehaviour
 
         Instantiate(GameUI, Vector2.zero, Quaternion.identity);
         Instantiate(playerPrefab, Vector2.zero, Quaternion.identity);
-        Instantiate(EnemySpawner, Vector2.zero, Quaternion.identity);
+
     }
     void Start()
     {
-
+        player = GameObject.FindWithTag("Player");
 
 
     }
@@ -42,7 +47,17 @@ public class WorldManager : MonoBehaviour
         
     }
 
+    public void SpawnEnemy(GameObject enemy, float StatMultiplier)
+    {
 
+        Vector3 direction = new Vector3(Random.Range(-1, 1),  Random.Range(-1, 1), 0);
+        direction = direction * 10;
+        if (direction == Vector3.zero) { return; }
+        Vector3 FinalSpawnpoint = (player.transform.position + direction);
+
+
+        Instantiate(enemy, FinalSpawnpoint ,Quaternion.identity);
+    }
 
 
 

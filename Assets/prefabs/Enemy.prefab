@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6121441751581346927}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Undefined
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   _object: {fileID: 11400000, guid: b626297349e3805488625d3e1007a612, type: 2}
+  rb: {fileID: 0}
   Health: 0
   Speed: 0
   Scale: {x: 0, y: 0, z: 0}
@@ -59,7 +60,7 @@ MonoBehaviour:
   ProjectileSpeed: 0
   AttackRange: 0
   AttackDamage: 0
-  MoveTarget: {x: 0, y: 0}
+  MoveTarget: {fileID: 0}
   ShootTarget: {x: 0, y: 0}
   PlayerScan: {fileID: 0}
   ActiveSprite: {fileID: 0}
