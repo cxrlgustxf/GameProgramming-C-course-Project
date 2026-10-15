@@ -21,7 +21,8 @@ public class Projectile : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, Range);
+
+
     }
     public void Init(float damage, float speed, float range, Vector3 direction, int penetration, Sprite ProjectileSprite) 
     {
@@ -35,6 +36,7 @@ public class Projectile : MonoBehaviour
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.eulerAngles = new Vector3(0, 0, angle);
+        Destroy(gameObject, Range);
     }
 
 
@@ -42,9 +44,6 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         rb.linearVelocity = Direction * Time.deltaTime * Speed;
-        Range -= Time.deltaTime;
-
-            
 
     }
 

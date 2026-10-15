@@ -184,8 +184,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   Weapons:
   - {fileID: 11400000, guid: c25f3e3a70e4b41448d4e66dbb4d01b9, type: 2}
+  - {fileID: 11400000, guid: 28dd1fe3e2813df45ba32595878a0fbb, type: 2}
+  - {fileID: 11400000, guid: 525597a2f6076734db93d1c1756bbb89, type: 2}
   ProjectilePrefab: {fileID: 4803416888436211485, guid: d58dcbfc97430f34097896eb3acdafba, type: 3}
-  player: {fileID: 2299366794265833187}
   ProjectileSprites: []
   CooldownDuration: 0
 --- !u!58 &8648480022392254520
