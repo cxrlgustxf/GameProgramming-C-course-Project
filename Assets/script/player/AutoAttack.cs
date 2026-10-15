@@ -1,21 +1,24 @@
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
+
 using UnityEngine;
 
 public class AutoAttack : MonoBehaviour
 {
     [SerializeField] Player player;
-    PlayerStats stats;
+
+    public Weapon[] weapon;
+    
 
     void Awake()
     {
-        stats = player.stats;
+        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            
+            weapon.Attack(player.transform.position, collision.gameObject.transform.position);
+            Debug.Log("Attacked!");
         }
     }
 }

@@ -106,4 +106,16 @@ public class Enemy: MonoBehaviour
 
     }
 
+
+    public void TakeDamage(float amount)
+    {
+        Health -= amount;
+        Health = Mathf.Clamp(Health,0 , 1000);
+
+        if(Health == 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }

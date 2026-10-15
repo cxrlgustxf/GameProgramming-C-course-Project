@@ -1,5 +1,3 @@
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UI;
 public class PlayerStats
@@ -41,7 +39,7 @@ public class PlayerStats
     {
 
 
-        if (Health < MaxHealth)
+        if (Health <= MaxHealth)
             {
             Health += regenAmount * delta;
             Mathf.Clamp(Health, 0, MaxHealth);
@@ -74,7 +72,11 @@ public class PlayerStats
     {
         Health += healAmount;
         EventsUI.HealthHasChanged(Health);
+    
     }
+
+
+
     public void TakeDamage(float damageAmount)
     {
 

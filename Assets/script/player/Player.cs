@@ -4,22 +4,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    public List<SOItem> Weapon = new List<SOItem>();
+
+
     public Rigidbody2D rb;
     public Animations animations;
     public InputManager input;
-
     public CircleCollider2D attackArea;
-
-    public float AttackCooldown;
-
     public PlayerStats stats;
-
-
     public StateIdle stateIdle;
     public StateMove stateMove;
 
-
+    
 
 
     void Awake()
@@ -46,11 +41,11 @@ public class Player : MonoBehaviour
 
         stats.HandleUpdates();
 
-
-
-
     }
 
+
+    
+    
 
 
 
