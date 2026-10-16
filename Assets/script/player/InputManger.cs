@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour
 {
 
     private PlayerInput input;
     private InputAction movementAction;
+    private InputAction pauseAction;
 
     public Vector2 MovementInput;
 
@@ -18,16 +20,19 @@ public class InputManager : MonoBehaviour
     {
         IsMoving = false;
         input = GetComponent<PlayerInput>();
-
+        
     }
 
     void Start()
     {
         
         movementAction = input.actions["Move"];
+        pauseAction = input.actions["Pause"];
 
         movementAction.started += movement;
         movementAction.canceled += movement;
+
+        pauseAction.started += pauseGame;
     }
 
     // Update is called once per frame
@@ -44,6 +49,22 @@ public class InputManager : MonoBehaviour
     {
         if (context.started) { IsMoving = true; }
         if (context.canceled){ IsMoving = false; }
+    }
+
+
+    void pauseGame(InputAction.CallbackContext context)
+    {
+
+        if (!SceneManager.GetSceneByName("PauseMenu").IsValid())
+        {
+            SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+            SceneManager.UnloadSceneAsync("PauseMenu");
+        }
+        
     }
 
     private void OnDestroy()
