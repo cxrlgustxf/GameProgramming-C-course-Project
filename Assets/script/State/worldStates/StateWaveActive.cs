@@ -16,6 +16,7 @@ public class StateWaveActive : IState
     public void EnterState(StateMachine cxt)
     {
 
+        
         SpawnedEnemies = 0;
         if (Wave < 20)
         {
@@ -26,6 +27,8 @@ public class StateWaveActive : IState
         }
         EnemyStatsMultiplier = (float)Wave * 0.7f;
         SpawnTimer = Random.Range(1, 3);
+        EventsUI.EnemyAmount = MaxEnemies;
+        EventsUI.EnemyHasBeenKilled(EventsUI.EnemyAmount);
     }
     public void ExitState(StateMachine cxt)
     {

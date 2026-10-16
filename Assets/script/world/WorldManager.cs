@@ -51,8 +51,9 @@ public class WorldManager : MonoBehaviour
     {
 
         Vector3 direction = new Vector3(Random.Range(-1, 1),  Random.Range(-1, 1), 0);
+        while (direction == Vector3.zero) { direction = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0); }
         direction = direction * 10;
-        if (direction == Vector3.zero) { return; }
+        
         Vector3 FinalSpawnpoint = (player.transform.position + direction);
 
 

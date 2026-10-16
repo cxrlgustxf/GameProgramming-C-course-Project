@@ -41,7 +41,7 @@ public class Weapon : MonoBehaviour
 
             Projectile projectileStats = SpawnedProjectile.GetComponent<Projectile>();
 
-            Debug.Log("Why isnt it spawning??");
+           
 
             Vector3 projectileDirection = (enemy.transform.position - transform.position).normalized;
 

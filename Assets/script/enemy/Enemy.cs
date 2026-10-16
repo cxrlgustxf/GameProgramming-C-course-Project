@@ -114,6 +114,8 @@ public class Enemy: MonoBehaviour
 
         if(Health == 0)
         {
+            EventsUI.EnemyAmount--;
+            EventsUI.EnemyHasBeenKilled(EventsUI.EnemyAmount);
             Destroy(gameObject);
         }
     }

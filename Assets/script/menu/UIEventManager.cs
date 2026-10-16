@@ -9,6 +9,10 @@ public class InGameUI : MonoBehaviour
     [SerializeField] Image HealthBar;
     [SerializeField] Image EXPBar;
     [SerializeField] TextMeshProUGUI CountdownUI;
+
+    [SerializeField] TextMeshProUGUI RemainingEnemies;
+
+
     void Awake()
     {
         
@@ -16,6 +20,8 @@ public class InGameUI : MonoBehaviour
         EventsUI.OnEXPGained += UpdateEXPBar;
         EventsUI.OnCountdownActive += UpdateCountdown;
         EventsUI.OnToggleCounter += SetCountdownVisibility;
+        EventsUI.OnEnemyKilled += UpdateEnemiesRemaining;
+        
     }
 
 
@@ -40,22 +46,43 @@ public class InGameUI : MonoBehaviour
     {
         EXPBar.fillAmount = Amount / 100f;
     }
+
+    void SetMaxEnemies()
+    {
+
+    }
+    void UpdateEnemiesRemaining(int Amount) {
+        
+
+        
+        RemainingEnemies.text = Amount.ToString();
+
+    }
+
     void OnDestroy()
     {
         EventsUI.OnHealthChanged -= UpdateHealthBar;
         EventsUI.OnEXPGained -= UpdateEXPBar;
         EventsUI.OnCountdownActive -= UpdateCountdown;
         EventsUI.OnToggleCounter -= SetCountdownVisibility;
+        EventsUI.OnEnemyKilled -= UpdateEnemiesRemaining;
     }
+
+
 }
 
 public static class EventsUI
 {
 
+    public static int EnemyAmount;
     public static event Action<bool> OnToggleCounter;
     public static event Action<float> OnCountdownActive;
     public static event Action<float> OnHealthChanged;
     public static event Action<float> OnEXPGained;
+
+    public static event Action<int> OnEnemyKilled;
+
+    public static event Action<bool> OnGameReset;
 
     public static void HealthHasChanged(float newHPValue)
     {
@@ -75,6 +102,17 @@ public static class EventsUI
     public static void ToggleVisibilityForCounter(bool visible)
     {
         OnToggleCounter?.Invoke(visible);
+    }
+
+    public static void EnemyHasBeenKilled(int amount)
+    {
+        OnEnemyKilled.Invoke(amount);
+    }
+    
+    
+    public static void GameHasReset(bool resetGame)
+    {
+        OnGameReset.Invoke(resetGame);
     }
 
 }
