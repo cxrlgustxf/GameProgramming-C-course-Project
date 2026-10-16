@@ -1125,10 +1125,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5965857034978316565}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50.41651, y: 0.375}
-  m_SizeDelta: {x: 165.1622, y: 28.2515}
+  m_AnchorMin: {x: 0.36468875, y: 0.40715423}
+  m_AnchorMax: {x: 0.9850001, y: 0.60212773}
+  m_AnchoredPosition: {x: -1.026, y: -0.5}
+  m_SizeDelta: {x: -2.052, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1928210084350267261
 CanvasRenderer:
@@ -1435,7 +1435,6 @@ MonoBehaviour:
   WaveText: {fileID: 8861261431358157634}
   Level: {fileID: 6670680099554114226}
   CurrentScoreText: {fileID: 3633615136105286841}
-  LevelUpScreen: {fileID: 8433824681266685868, guid: 2c6b1af5dc49220448936277efbecf28, type: 3}
 --- !u!1 &7038593742533816036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,8 +1683,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.091000006, y: 0.82877785}
   m_AnchorMax: {x: 0.32943755, y: 0.87338895}
-  m_AnchoredPosition: {x: -79.59268, y: 0}
-  m_SizeDelta: {x: -91.5854, y: 115.4873}
+  m_AnchoredPosition: {x: -55.7323, y: -31.1495}
+  m_SizeDelta: {x: 29.7666, y: 88.2857}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7835242254502069825
 CanvasRenderer:

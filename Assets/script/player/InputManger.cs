@@ -54,16 +54,19 @@ public class InputManager : MonoBehaviour
 
     void pauseGame(InputAction.CallbackContext context)
     {
+        //Pause menu cant interfere with other menus
+        if (!SceneManager.GetSceneByName("LevelUpScene").IsValid() && !SceneManager.GetSceneByName("DeathScene").IsValid()){
+            if (!SceneManager.GetSceneByName("PauseMenu").IsValid())
+            {
+                SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
+            }
+            else
+            {
+                Time.timeScale = 1.0f;
+                SceneManager.UnloadSceneAsync("PauseMenu");
+            }
+        }
 
-        if (!SceneManager.GetSceneByName("PauseMenu").IsValid())
-        {
-            SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
-        }
-        else
-        {
-            Time.timeScale = 1.0f;
-            SceneManager.UnloadSceneAsync("PauseMenu");
-        }
         
     }
 
