@@ -26,6 +26,7 @@ public class Enemy: MonoBehaviour
 
     public Vector2 ShootTarget;
 
+    public float EXPReward;
     
     public CircleCollider2D PlayerScan;
 
@@ -55,14 +56,20 @@ public class Enemy: MonoBehaviour
         ProjectileSpeed = _object.ProjectileSpeed;
         AttackRange = _object.AttackRange;
         attackType = _object.attackType;
-
+        EXPReward = _object.EXPReward;
         stateChase = new EnemyStateChase();
         stateDead = new EnemyStateDead();
 
         
     }
 
-    
+    public void StatMultiply(float multiplier)
+    {
+        Speed = Speed * multiplier;
+        Speed = Mathf.Clamp(Speed, 0, 20);
+
+        Health = Health * multiplier;
+    }
     
     void Start()
     {
@@ -107,15 +114,17 @@ public class Enemy: MonoBehaviour
     }
 
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, Player _player)
     {
         Health -= amount;
         Health = Mathf.Clamp(Health,0 , 1000);
 
         if(Health == 0)
         {
+
             EventsUI.EnemyAmount--;
             EventsUI.EnemyHasBeenKilled(EventsUI.EnemyAmount);
+            _player.stats.GainEXP(EXPReward);
             Destroy(gameObject);
         }
     }

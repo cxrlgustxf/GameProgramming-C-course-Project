@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class Weapon : MonoBehaviour
 {
 
-
+    [SerializeField] Player player;    
     [SerializeField] SOItem[] Weapons;
 
     public GameObject ProjectilePrefab;
@@ -18,6 +18,7 @@ public class Weapon : MonoBehaviour
 
     void Awake()
     {
+        
         CurrentCooldown = 0f;
     }
 
@@ -45,7 +46,7 @@ public class Weapon : MonoBehaviour
 
             Vector3 projectileDirection = (enemy.transform.position - transform.position).normalized;
 
-            projectileStats.Init(Weapons[0].Damage, Weapons[0].AttackSpeed, Weapons[0].ProjectileRange, projectileDirection, Weapons[0].Penetration, Weapons[0].icon);
+            projectileStats.Init(Weapons[0].Damage, Weapons[0].AttackSpeed, Weapons[0].ProjectileRange, projectileDirection, Weapons[0].Penetration, Weapons[0].icon, player);
             CurrentCooldown = Weapons[0].AttackRate;
             
             

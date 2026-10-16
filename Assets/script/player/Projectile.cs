@@ -4,6 +4,7 @@ public class Projectile : MonoBehaviour
 {
 
 
+    public Player _player;
     public float Damage;
 
     public float Speed;
@@ -24,9 +25,9 @@ public class Projectile : MonoBehaviour
 
 
     }
-    public void Init(float damage, float speed, float range, Vector3 direction, int penetration, Sprite ProjectileSprite) 
+    public void Init(float damage, float speed, float range, Vector3 direction, int penetration, Sprite ProjectileSprite, Player player) 
     {
-        
+        _player = player;
         Damage = damage;
         Speed = speed;
         Range = range;
@@ -53,7 +54,7 @@ public class Projectile : MonoBehaviour
         {
             var enemy = collision.gameObject.GetComponent<Enemy>();
 
-            enemy.TakeDamage(Damage);
+            enemy.TakeDamage(Damage, _player);
             Penetration -= 1;
 
             if(Penetration == 0)

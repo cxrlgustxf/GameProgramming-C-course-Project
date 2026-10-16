@@ -26,7 +26,25 @@ public class PlayerStats
     public float NextLevelUp;
     public float PlayerLevel;
 
-    
+        public void InitStats(float multiplier)
+    {
+        MaxHealth = 100 * multiplier;
+        Health = MaxHealth * 0.5f;
+        HealthRegen = 1f * multiplier;
+
+        Speed = 5f * multiplier;
+
+        MaxMana = 100 * multiplier;
+        Mana = MaxMana * multiplier;
+        ManaRegen = 0.3f * multiplier;
+        PlayerEXP = 0f;
+
+        EventsUI.HealthHasChanged(Health);
+        EventsUI.EXPHasChanged(PlayerEXP);
+       
+    }
+
+
     public void HandleUpdates()
     {
         regenHealth(HealthRegen, Time.deltaTime);
@@ -48,16 +66,20 @@ public class PlayerStats
         
     }
 
-    public void GainEXP(int EXP)
+    public void GainEXP(float EXP)
     {
-        PlayerEXP += EXP;
 
-        EventsUI.EXPHasChanged(EXP);
-        if (PlayerEXP >= NextLevelUp)
+        
+        EventsUI.CurrentEXP += EXP;
+        EventsUI.EXPHasChanged(EventsUI.CurrentEXP);
+
+        if (EventsUI.CurrentEXP >= NextLevelUp)
         {
             NextLevelUp = NextLevelUp * 1.2f;
-
+    
         }
+        
+
     }
 
 
@@ -101,20 +123,6 @@ public class PlayerStats
         
     }
 
-    public void InitStats(float multiplier)
-    {
-        MaxHealth = 100 * multiplier;
-        Health = MaxHealth * 0.5f;
-        HealthRegen = 1f * multiplier;
 
-        Speed = 5f * multiplier;
 
-        MaxMana = 100 * multiplier;
-        Mana = MaxMana * multiplier;
-        ManaRegen = 0.3f * multiplier;
-        PlayerEXP = 0f;
-
-        EventsUI.HealthHasChanged(Health);
-        EventsUI.EXPHasChanged(PlayerEXP);
-    }
 }

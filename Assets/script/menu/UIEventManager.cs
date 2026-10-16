@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class InGameUI : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI RemainingEnemies;
 
+    [SerializeField] TextMeshProUGUI WaveText;
 
     void Awake()
     {
@@ -21,7 +23,7 @@ public class InGameUI : MonoBehaviour
         EventsUI.OnCountdownActive += UpdateCountdown;
         EventsUI.OnToggleCounter += SetCountdownVisibility;
         EventsUI.OnEnemyKilled += UpdateEnemiesRemaining;
-        
+        EventsUI.OnWaveIncrease += UpdateWave;
     }
 
 
@@ -44,19 +46,34 @@ public class InGameUI : MonoBehaviour
     }
     void UpdateEXPBar(float Amount)
     {
-        EXPBar.fillAmount = Amount / 100f;
+
+        EventsUI.CurrentEXP += Amount;
+        EXPBar.fillAmount = EventsUI.CurrentEXP / 100f;
     }
 
-    void SetMaxEnemies()
-    {
-
-    }
     void UpdateEnemiesRemaining(int Amount) {
-        
-
         
         RemainingEnemies.text = Amount.ToString();
 
+    }
+
+    void UpdateWave(int newWave)
+    {
+        WaveText.text = newWave.ToString();
+        Debug.Log("Wave Incremented, new wave: " + newWave);
+    }
+
+
+    void IncreaseScore(int Score)
+    {
+        
+    }
+
+
+
+    void IncreaseLevel(int Level)
+    {
+        
     }
 
     void OnDestroy()
@@ -66,6 +83,8 @@ public class InGameUI : MonoBehaviour
         EventsUI.OnCountdownActive -= UpdateCountdown;
         EventsUI.OnToggleCounter -= SetCountdownVisibility;
         EventsUI.OnEnemyKilled -= UpdateEnemiesRemaining;
+        EventsUI.OnWaveIncrease -= UpdateWave;
+        
     }
 
 
@@ -75,10 +94,15 @@ public static class EventsUI
 {
 
     public static int EnemyAmount;
+
+    public static float CurrentEXP;
+    public static int Score;
     public static event Action<bool> OnToggleCounter;
     public static event Action<float> OnCountdownActive;
     public static event Action<float> OnHealthChanged;
     public static event Action<float> OnEXPGained;
+
+    public static event Action<int> OnWaveIncrease;
 
     public static event Action<int> OnEnemyKilled;
 
@@ -113,6 +137,11 @@ public static class EventsUI
     public static void GameHasReset(bool resetGame)
     {
         OnGameReset.Invoke(resetGame);
+    }
+
+    public static void IncrementWave(int newWave)
+    {
+        OnWaveIncrease.Invoke(newWave);
     }
 
 }

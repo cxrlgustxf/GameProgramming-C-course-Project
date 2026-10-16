@@ -50,14 +50,17 @@ public class WorldManager : MonoBehaviour
     public void SpawnEnemy(GameObject enemy, float StatMultiplier)
     {
 
-        Vector3 direction = new Vector3(Random.Range(-1, 1),  Random.Range(-1, 1), 0);
-        while (direction == Vector3.zero) { direction = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0); }
+        Vector3 direction = new Vector3(Random.Range(-1, 2),  Random.Range(-1, 2), 0);
+        if (direction == Vector3.zero) { direction = new Vector3(1, 0, 0); }
         direction = direction * 10;
         
-        Vector3 FinalSpawnpoint = (player.transform.position + direction);
+        
+        Vector3 FinalSpawnpoint = player.transform.position + direction;
 
 
-        Instantiate(enemy, FinalSpawnpoint ,Quaternion.identity);
+        GameObject newEnemy = Instantiate(enemy, FinalSpawnpoint ,Quaternion.identity);
+        Enemy getStats = newEnemy.GetComponent<Enemy>();
+        getStats.StatMultiply(StatMultiplier);
     }
 
 
