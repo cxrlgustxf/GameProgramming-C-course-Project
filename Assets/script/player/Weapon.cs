@@ -1,7 +1,4 @@
-
 using UnityEngine;
-using System.Collections.Generic;
-
 
 public class Weapon : MonoBehaviour
 {
@@ -16,11 +13,45 @@ public class Weapon : MonoBehaviour
     public float CooldownDuration;
     float CurrentCooldown;
 
+
+
+    public float Damage;
+    public int Penetration;
+
+    public float Range;
+
+    public int ProjectileAmount;
+
+    public float AttackSpeed;
+
+    public float AttackRate;
+
+    public int CurrentWeapon;
+
+    public Sprite icon;
+
+
     void Awake()
     {
         
         CurrentCooldown = 0f;
+        CurrentWeapon = 0;
+        InitWeapon();
     }
+
+
+
+    public void InitWeapon()
+    {
+        Damage = Weapons[CurrentWeapon].Damage;
+        Penetration = Weapons[CurrentWeapon].Penetration;
+        Range = Weapons[CurrentWeapon].ProjectileRange;
+        ProjectileAmount = Weapons[CurrentWeapon].ProjectileAmount;
+        AttackSpeed = Weapons[CurrentWeapon].AttackSpeed;
+        AttackRate = Weapons[CurrentWeapon].AttackRate;
+        icon = Weapons[CurrentWeapon].icon;
+    }
+
 
     void Update()
     {
@@ -31,6 +62,8 @@ public class Weapon : MonoBehaviour
 
         }
     }
+
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy") && CurrentCooldown <= 0)
@@ -46,9 +79,9 @@ public class Weapon : MonoBehaviour
 
             Vector3 projectileDirection = (enemy.transform.position - transform.position).normalized;
 
-            projectileStats.Init(Weapons[0].Damage, Weapons[0].AttackSpeed, Weapons[0].ProjectileRange, projectileDirection, Weapons[0].Penetration, Weapons[0].icon, player);
-            CurrentCooldown = Weapons[0].AttackRate;
-            
+            projectileStats.Init(Damage, AttackSpeed, Range, projectileDirection, Penetration, icon, player);
+            CurrentCooldown = Weapons[CurrentWeapon].AttackRate;
+            CurrentCooldown = Mathf.Clamp(CurrentCooldown, 0.05f, 3);
             
 
         }

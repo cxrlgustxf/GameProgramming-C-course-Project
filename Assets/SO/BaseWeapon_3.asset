@@ -15,7 +15,7 @@ MonoBehaviour:
   icon: {fileID: -735890222, guid: 0a0ac9938009d164e9c2e102d4cbce46, type: 3}
   animation: {fileID: 0}
   Damage: 60
-  Penetration: 0
+  Penetration: 7
   ProjectileRange: 5
   ProjectileAmount: 1
   AttackSpeed: 2

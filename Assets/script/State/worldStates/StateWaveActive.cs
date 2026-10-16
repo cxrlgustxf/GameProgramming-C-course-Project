@@ -46,7 +46,7 @@ public class StateWaveActive : IState
         SpawnTimer = Mathf.Clamp(SpawnTimer, 0, HighSpawnTime);
 
 
-        if (EventsUI.EnemyAmount == 0)
+        if (EventsUI.EnemyAmount <= 0)
         {
             cxt.ChangeState(cxt.worldManager.stateCountdown);
         }
@@ -57,7 +57,7 @@ public class StateWaveActive : IState
 
             
             
-            SpawnTimer = Random.Range(LowSpawnTime, LowSpawnTime);
+            SpawnTimer = Random.Range(LowSpawnTime, HighSpawnTime);
             cxt.worldManager.SpawnEnemy(cxt.worldManager.EnemyPrefabs[0], EnemyStatsMultiplier);
 
             SpawnedEnemies++;

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SOItem
   icon: {fileID: -735890222, guid: 0a0ac9938009d164e9c2e102d4cbce46, type: 3}
   animation: {fileID: 0}
-  Damage: 200
+  Damage: 5
   Penetration: 1
   ProjectileRange: 5
   ProjectileAmount: 1
-  AttackSpeed: 8000
-  AttackRate: 0.1
+  AttackSpeed: 1000
+  AttackRate: 0.7
   itemType: 1

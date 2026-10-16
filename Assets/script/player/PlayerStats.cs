@@ -1,6 +1,5 @@
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class PlayerStats
 {
 
@@ -12,15 +11,8 @@ public class PlayerStats
 
     public float HealthRegen;
 
-    public float Mana;
-
-    public float MaxMana;
-
-    public float ManaRegen;
 
     public float InvincibilityTime;
-
-    public Image HealthBar;
 
     public float PlayerEXP;
 
@@ -35,12 +27,10 @@ public class PlayerStats
 
         Speed = 5f * multiplier;
 
-        MaxMana = 100 * multiplier;
-        Mana = MaxMana * multiplier;
-        ManaRegen = 0.3f * multiplier;
+
         PlayerEXP = 0f;
         NextLevelUp = 30;
-        PlayerLevel = 1;
+        PlayerLevel = 0;
 
         EventsUI.HealthHasChanged(Health);
         EventsUI.EXPHasChanged(PlayerEXP);
@@ -81,12 +71,12 @@ public class PlayerStats
             
             float buffer = PlayerEXP - NextLevelUp; 
 
-            NextLevelUp = NextLevelUp * 1.5f;
+            NextLevelUp = NextLevelUp * 1.1f;
             PlayerLevel++;
 
             PlayerEXP = buffer;
             EventsUI.IncrementLevel(PlayerLevel);
-            Debug.Log("Leveled up!! " + PlayerLevel);
+            SceneManager.LoadScene("LevelUpScene", LoadSceneMode.Additive);
 
         }
 
@@ -95,13 +85,15 @@ public class PlayerStats
         EventsUI.EXPHasChanged(fillAmount);
     }
 
-
-
-    public void LevelUp()
+    public void OnUpgrade(int Leveldown)
     {
-        
+        PlayerLevel -= Leveldown;
+        EventsUI.IncrementLevel(PlayerLevel);
+        SceneManager.UnloadSceneAsync("LevelUpScene");
+        Time.timeScale = 1f;
 
     }
+
 
     public void Heal(float healAmount)
     {
@@ -121,6 +113,11 @@ public class PlayerStats
         Health = Mathf.Clamp(Health, 0, MaxHealth);
         InvincibilityTime = 0.5f;
         EventsUI.HealthHasChanged(Health);
+        }
+
+    if (Health == 0) {
+            SceneManager.LoadScene("DeathScene", LoadSceneMode.Additive);
+            Time.timeScale = 0.0f;
         }
 
     }

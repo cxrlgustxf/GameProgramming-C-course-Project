@@ -1,6 +1,4 @@
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-
 public class Enemy: MonoBehaviour
 {
 
@@ -123,6 +121,7 @@ public class Enemy: MonoBehaviour
         {
 
             EventsUI.EnemyAmount--;
+            EventsUI.IncreaseScore(1);
             EventsUI.EnemyHasBeenKilled(EventsUI.EnemyAmount);
             _player.stats.GainEXP(EXPReward);
             Destroy(gameObject);

@@ -1,12 +1,12 @@
 using System;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InGameUI : MonoBehaviour
 {
+
+
 
     [SerializeField] Image HealthBar;
     [SerializeField] Image EXPBar;
@@ -17,9 +17,15 @@ public class InGameUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI WaveText;
     [SerializeField] TextMeshProUGUI Level;
 
+    [SerializeField] TextMeshProUGUI CurrentScoreText;
+
     void Awake()
     {
-        
+
+
+        EventsUI.CurrentEXP = 0;
+        EventsUI.Score = 0;
+
         EventsUI.OnHealthChanged += UpdateHealthBar;
         EventsUI.OnEXPGained += UpdateEXPBar;
         EventsUI.OnCountdownActive += UpdateCountdown;
@@ -27,6 +33,8 @@ public class InGameUI : MonoBehaviour
         EventsUI.OnEnemyKilled += UpdateEnemiesRemaining;
         EventsUI.OnWaveIncrease += UpdateWave;
         EventsUI.OnLevelUp += UpdateLevel;
+
+        EventsUI.OnScoreIncrease += UpdateScore;
     }
 
 
@@ -69,15 +77,26 @@ public class InGameUI : MonoBehaviour
 
     void UpdateScore(int Score)
     {
+        
         EventsUI.Score += Score;
+
+        CurrentScoreText.text = EventsUI.Score.ToString();
+
     }
 
 
 
     void UpdateLevel(int _level)
     {
+
+
+        
         Level.text = _level.ToString();
+        
+        
     }
+
+
 
     void OnDestroy()
     {
@@ -87,7 +106,9 @@ public class InGameUI : MonoBehaviour
         EventsUI.OnToggleCounter -= SetCountdownVisibility;
         EventsUI.OnEnemyKilled -= UpdateEnemiesRemaining;
         EventsUI.OnWaveIncrease -= UpdateWave;
-        
+        EventsUI.OnLevelUp -= UpdateLevel;
+        EventsUI.OnScoreIncrease -= UpdateScore;
+
     }
 
 
@@ -110,9 +131,10 @@ public static class EventsUI
 
     public static event Action<int> OnEnemyKilled;
 
-    public static event Action<bool> OnGameReset;
-
     public static event Action<int> OnLevelUp;
+
+    public static event Action<int> OnScoreIncrease;
+
 
     public static void HealthHasChanged(float newHPValue)
     {
@@ -139,11 +161,7 @@ public static class EventsUI
         OnEnemyKilled.Invoke(amount);
     }
     
-    
-    public static void GameHasReset(bool resetGame)
-    {
-        OnGameReset.Invoke(resetGame);
-    }
+   
 
     public static void IncrementWave(int newWave)
     {
@@ -153,6 +171,11 @@ public static class EventsUI
     public static void IncrementLevel(int newLevel)
     {
         OnLevelUp.Invoke(newLevel);
+    }
+
+    public static void IncreaseScore(int newScore)
+    {
+        OnScoreIncrease.Invoke(newScore);
     }
 }
 
