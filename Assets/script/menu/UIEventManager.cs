@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class InGameUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI RemainingEnemies;
 
     [SerializeField] TextMeshProUGUI WaveText;
+    [SerializeField] TextMeshProUGUI Level;
 
     void Awake()
     {
@@ -24,6 +26,7 @@ public class InGameUI : MonoBehaviour
         EventsUI.OnToggleCounter += SetCountdownVisibility;
         EventsUI.OnEnemyKilled += UpdateEnemiesRemaining;
         EventsUI.OnWaveIncrease += UpdateWave;
+        EventsUI.OnLevelUp += UpdateLevel;
     }
 
 
@@ -47,8 +50,8 @@ public class InGameUI : MonoBehaviour
     void UpdateEXPBar(float Amount)
     {
 
-        EventsUI.CurrentEXP += Amount;
-        EXPBar.fillAmount = EventsUI.CurrentEXP / 100f;
+        EXPBar.fillAmount = Amount;
+        
     }
 
     void UpdateEnemiesRemaining(int Amount) {
@@ -64,16 +67,16 @@ public class InGameUI : MonoBehaviour
     }
 
 
-    void IncreaseScore(int Score)
+    void UpdateScore(int Score)
     {
-        
+        EventsUI.Score += Score;
     }
 
 
 
-    void IncreaseLevel(int Level)
+    void UpdateLevel(int _level)
     {
-        
+        Level.text = _level.ToString();
     }
 
     void OnDestroy()
@@ -95,6 +98,7 @@ public static class EventsUI
 
     public static int EnemyAmount;
 
+    
     public static float CurrentEXP;
     public static int Score;
     public static event Action<bool> OnToggleCounter;
@@ -107,6 +111,8 @@ public static class EventsUI
     public static event Action<int> OnEnemyKilled;
 
     public static event Action<bool> OnGameReset;
+
+    public static event Action<int> OnLevelUp;
 
     public static void HealthHasChanged(float newHPValue)
     {
@@ -144,5 +150,9 @@ public static class EventsUI
         OnWaveIncrease.Invoke(newWave);
     }
 
+    public static void IncrementLevel(int newLevel)
+    {
+        OnLevelUp.Invoke(newLevel);
+    }
 }
 

@@ -1,3 +1,4 @@
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UI;
 public class PlayerStats
@@ -24,7 +25,7 @@ public class PlayerStats
     public float PlayerEXP;
 
     public float NextLevelUp;
-    public float PlayerLevel;
+    public int PlayerLevel;
 
         public void InitStats(float multiplier)
     {
@@ -38,6 +39,8 @@ public class PlayerStats
         Mana = MaxMana * multiplier;
         ManaRegen = 0.3f * multiplier;
         PlayerEXP = 0f;
+        NextLevelUp = 30;
+        PlayerLevel = 1;
 
         EventsUI.HealthHasChanged(Health);
         EventsUI.EXPHasChanged(PlayerEXP);
@@ -70,16 +73,26 @@ public class PlayerStats
     {
 
         
-        EventsUI.CurrentEXP += EXP;
-        EventsUI.EXPHasChanged(EventsUI.CurrentEXP);
-
-        if (EventsUI.CurrentEXP >= NextLevelUp)
-        {
-            NextLevelUp = NextLevelUp * 1.2f;
-    
-        }
         
+        PlayerEXP += EXP;
 
+        if (PlayerEXP >= NextLevelUp)
+        {
+            
+            float buffer = PlayerEXP - NextLevelUp; 
+
+            NextLevelUp = NextLevelUp * 1.5f;
+            PlayerLevel++;
+
+            PlayerEXP = buffer;
+            EventsUI.IncrementLevel(PlayerLevel);
+            Debug.Log("Leveled up!! " + PlayerLevel);
+
+        }
+
+        float fillAmount = PlayerEXP / NextLevelUp;
+
+        EventsUI.EXPHasChanged(fillAmount);
     }
 
 

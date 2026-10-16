@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3457479927749115946}
   - component: {fileID: 6670680099554114226}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: LevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.9
+  m_fontSize: 38.55
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.252
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1433,6 +1433,7 @@ MonoBehaviour:
   CountdownUI: {fileID: 5439512037790028350}
   RemainingEnemies: {fileID: 4263935922778749096}
   WaveText: {fileID: 8861261431358157634}
+  Level: {fileID: 6670680099554114226}
 --- !u!1 &7038593742533816036
 GameObject:
   m_ObjectHideFlags: 0
